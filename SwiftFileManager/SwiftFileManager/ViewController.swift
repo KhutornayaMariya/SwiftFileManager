@@ -10,10 +10,11 @@ import UIKit
 final class ViewController: UIViewController {
 
     var url: URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-
     var files: [URL] {
         return (try? FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil)) ?? []
     }
+
+    let fileManagerService: FileManagerServiceProtocol = FileManagerService()
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -87,25 +88,8 @@ final class ViewController: UIViewController {
     @objc
     func createNewFolder() {
         let newUrl = url.appendingPathComponent("\(Date())")
-        do {
-            try FileManager.default.createDirectory(at: newUrl, withIntermediateDirectories: false)
-        } catch {
-            print(error.localizedDescription)
-        }
+        fileManagerService.createNewFolder(url: newUrl)
         tableView.reloadData()
-    }
-
-    private func addFile(name: String, data: Data) {
-        let imagePath = self.url.appendingPathComponent(name)
-        FileManager.default.createFile(atPath: imagePath.path, contents: data, attributes: nil)
-    }
-
-    private func deleteFile(path: String) {
-        do {
-            try FileManager.default.removeItem(atPath: path)
-        } catch {
-            print(error)
-        }
     }
 
     private func showAlert(image: UIImage) {
@@ -121,7 +105,7 @@ final class ViewController: UIViewController {
                   let data = image.pngData()
             else { return }
 
-            self.addFile(name: imageName, data: data)
+            self.fileManagerService.addFile(url: self.url, name: imageName, data: data)
             self.tableView.reloadData()
         }
 
@@ -164,7 +148,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         let action = UIContextualAction(style: .destructive, title: "Удалить") { [weak self] (_, _, _) in
             guard let self = self else { return }
 
-            self.deleteFile(path: self.files[indexPath.row].path)
+            self.fileManagerService.deleteFile(path: self.files[indexPath.row].path)
             self.tableView.reloadData()
         }
         return .init(actions: [action])

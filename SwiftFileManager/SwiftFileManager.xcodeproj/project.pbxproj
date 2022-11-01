@@ -12,6 +12,7 @@
 		45285256290FA72B008DD62C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45285255290FA72B008DD62C /* ViewController.swift */; };
 		4528525B290FA72C008DD62C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4528525A290FA72C008DD62C /* Assets.xcassets */; };
 		4528525E290FA72C008DD62C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4528525C290FA72C008DD62C /* LaunchScreen.storyboard */; };
+		4528526B29116338008DD62C /* FileManagerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4528526A29116338008DD62C /* FileManagerService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		4528525A290FA72C008DD62C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4528525D290FA72C008DD62C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4528525F290FA72C008DD62C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4528526A29116338008DD62C /* FileManagerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				45285251290FA72B008DD62C /* AppDelegate.swift */,
 				45285253290FA72B008DD62C /* SceneDelegate.swift */,
 				45285255290FA72B008DD62C /* ViewController.swift */,
+				4528526A29116338008DD62C /* FileManagerService.swift */,
 				4528525A290FA72C008DD62C /* Assets.xcassets */,
 				4528525C290FA72C008DD62C /* LaunchScreen.storyboard */,
 				4528525F290FA72C008DD62C /* Info.plist */,
@@ -137,6 +140,7 @@
 				45285256290FA72B008DD62C /* ViewController.swift in Sources */,
 				45285252290FA72B008DD62C /* AppDelegate.swift in Sources */,
 				45285254290FA72B008DD62C /* SceneDelegate.swift in Sources */,
+				4528526B29116338008DD62C /* FileManagerService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
