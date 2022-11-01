@@ -9,7 +9,7 @@ import UIKit
 
 final class ViewController: UIViewController {
 
-    let url: URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+    var url: URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
 
     var files: [URL] {
         return (try? FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil)) ?? []
@@ -31,6 +31,7 @@ final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUp()
+        print(url)
     }
 
     // MARK: Lifecycle
@@ -58,13 +59,21 @@ final class ViewController: UIViewController {
     }
 
     private func setUpNavigationBar() {
-        let infoButtonItem = UIBarButtonItem(
-            title: "Добавить фотографию",
+        let addFotoButtonItem = UIBarButtonItem(
+            title: "+Фото",
             style: UIBarButtonItem.Style.plain,
             target: self,
             action: #selector(openImagePicker)
         )
-        navigationItem.rightBarButtonItem = infoButtonItem
+
+        let createNewFolder = UIBarButtonItem(
+            title: "+Папка",
+            style: UIBarButtonItem.Style.plain,
+            target: self,
+            action: #selector(createNewFolder)
+        )
+
+        navigationItem.rightBarButtonItems = [createNewFolder, addFotoButtonItem]
     }
 
     @objc
@@ -73,6 +82,17 @@ final class ViewController: UIViewController {
         imagePicker.delegate = self
         imagePicker.sourceType = .photoLibrary
         present(imagePicker, animated: true)
+    }
+
+    @objc
+    func createNewFolder() {
+        let newUrl = url.appendingPathComponent("\(Date())")
+        do {
+            try FileManager.default.createDirectory(at: newUrl, withIntermediateDirectories: false)
+        } catch {
+            print(error.localizedDescription)
+        }
+        tableView.reloadData()
     }
 
     private func addFile(name: String, data: Data) {
@@ -88,19 +108,8 @@ final class ViewController: UIViewController {
         }
     }
 
-    private func cellSubtitle(path: String) -> String {
-        var isFolder: ObjCBool = false
-        _ = FileManager.default.fileExists(atPath: path, isDirectory: &isFolder)
-
-        if isFolder.boolValue {
-            return "FOLDER"
-        } else {
-            return "FILE"
-        }
-    }
-
     private func showAlert(image: UIImage) {
-        let alertController = UIAlertController(title: "Загрузить фото", message: nil, preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Загрузка фотографии", message: nil, preferredStyle: .alert)
         alertController.addTextField { textField in
             textField.placeholder = "Введите название"
         }
@@ -118,6 +127,20 @@ final class ViewController: UIViewController {
 
         alertController.addAction(saveImageAction)
         present(alertController, animated: true)
+    }
+
+    private func cellSubtitle(path: String) -> String {
+        if isFolder(path: path) {
+            return "FOLDER"
+        } else {
+            return "FILE"
+        }
+    }
+
+    private func isFolder(path: String) -> Bool {
+        var isFolder: ObjCBool = false
+        _ = FileManager.default.fileExists(atPath: path, isDirectory: &isFolder)
+        return isFolder.boolValue
     }
 }
 
@@ -145,6 +168,17 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             self.tableView.reloadData()
         }
         return .init(actions: [action])
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let item = files[indexPath.row]
+        if isFolder(path: item.path) {
+            let folderVC = ViewController()
+            folderVC.url = item
+            navigationController?.pushViewController(folderVC, animated: true)
+        } else {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
     }
 }
 
