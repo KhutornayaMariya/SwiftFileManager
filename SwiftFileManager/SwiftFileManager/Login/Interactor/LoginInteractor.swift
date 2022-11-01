@@ -7,18 +7,32 @@
 
 import Foundation
 
-final class LoginInteractor: LoginInteractorProtocol {
+final class LoginInteractor {
 
-    private let router: LoginRouter
+    private let router: LoginRouterProtocol
+    private let presenter: LoginPresenterProtocol
 
     init(
         input: LoginInput,
-        router: LoginRouter
+        router: LoginRouter,
+        presenter: LoginPresenter
     ) {
         self.router = router
+        self.presenter = presenter
     }
 
+    private func passwordExists() -> Bool {
+        return false
+    }
+}
+
+extension LoginInteractor: LoginInteractorProtocol {
+
     func didTapLoginButton() {
-        router.openFilesScreen()
+        router.openTabBar()
+    }
+
+    func viewDidLoad() {
+        presenter.updateView(hasPassword: passwordExists())
     }
 }

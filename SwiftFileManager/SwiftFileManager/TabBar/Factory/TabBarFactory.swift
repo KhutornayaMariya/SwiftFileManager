@@ -33,8 +33,7 @@ final class Factory {
             navigationController.tabBarItem = UITabBarItem(title: "Files", image: UIImage(systemName: "doc"), selectedImage: nil)
             navigationController.setViewControllers([controller], animated: true)
         case .settings:
-            let controller = UIViewController()
-            controller.view.backgroundColor = .brown
+            let controller = SettingsViewController()
 
             navigationController.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(systemName: "gearshape.fill"), selectedImage: nil)
             navigationController.setViewControllers([controller], animated: true)

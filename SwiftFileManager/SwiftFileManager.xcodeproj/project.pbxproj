@@ -24,6 +24,12 @@
 		4528528429117203008DD62C /* LoginInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4528528329117203008DD62C /* LoginInput.swift */; };
 		45285289291175D5008DD62C /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45285288291175D5008DD62C /* TabBarViewController.swift */; };
 		4528528C2911760F008DD62C /* TabBarFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4528528B2911760F008DD62C /* TabBarFactory.swift */; };
+		4528528F29117E0B008DD62C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4528528E29117E0B008DD62C /* SettingsViewController.swift */; };
+		4528529329117E26008DD62C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4528529229117E26008DD62C /* SettingsView.swift */; };
+		45285296291187E0008DD62C /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45285295291187E0008DD62C /* LoginPresenter.swift */; };
+		4528529829118845008DD62C /* LoginPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4528529729118845008DD62C /* LoginPresenterProtocol.swift */; };
+		4528529A29118896008DD62C /* LoginViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4528529929118896008DD62C /* LoginViewControllerProtocol.swift */; };
+		4528529C29118F90008DD62C /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4528529B29118F90008DD62C /* LoginViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +52,12 @@
 		4528528329117203008DD62C /* LoginInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInput.swift; sourceTree = "<group>"; };
 		45285288291175D5008DD62C /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		4528528B2911760F008DD62C /* TabBarFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarFactory.swift; sourceTree = "<group>"; };
+		4528528E29117E0B008DD62C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		4528529229117E26008DD62C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		45285295291187E0008DD62C /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		4528529729118845008DD62C /* LoginPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenterProtocol.swift; sourceTree = "<group>"; };
+		4528529929118896008DD62C /* LoginViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerProtocol.swift; sourceTree = "<group>"; };
+		4528529B29118F90008DD62C /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +90,7 @@
 		45285250290FA72B008DD62C /* SwiftFileManager */ = {
 			isa = PBXGroup;
 			children = (
+				4528528D29117DF4008DD62C /* Settings */,
 				45285286291175B1008DD62C /* TabBar */,
 				452852852911730A008DD62C /* Files */,
 				4528526C29116C22008DD62C /* Login */,
@@ -94,6 +107,8 @@
 		4528526C29116C22008DD62C /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				4528529D29118F94008DD62C /* ViewModel */,
+				45285294291187D0008DD62C /* Presenter */,
 				45285282291171F4008DD62C /* Input */,
 				4528527D291171A3008DD62C /* Builder */,
 				4528527829116CA4008DD62C /* Interactor */,
@@ -108,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				4528526D29116C4C008DD62C /* LoginViewController.swift */,
+				4528529929118896008DD62C /* LoginViewControllerProtocol.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -188,6 +204,48 @@
 			path = Factory;
 			sourceTree = "<group>";
 		};
+		4528528D29117DF4008DD62C /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				4528529129117E1A008DD62C /* View */,
+				4528529029117E0E008DD62C /* ViewController */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		4528529029117E0E008DD62C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4528528E29117E0B008DD62C /* SettingsViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		4528529129117E1A008DD62C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4528529229117E26008DD62C /* SettingsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		45285294291187D0008DD62C /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				45285295291187E0008DD62C /* LoginPresenter.swift */,
+				4528529729118845008DD62C /* LoginPresenterProtocol.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		4528529D29118F94008DD62C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				4528529B29118F90008DD62C /* LoginViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -263,16 +321,22 @@
 				45285252290FA72B008DD62C /* AppDelegate.swift in Sources */,
 				4528527C29117071008DD62C /* LoginRouterProtocol.swift in Sources */,
 				45285289291175D5008DD62C /* TabBarViewController.swift in Sources */,
+				4528529329117E26008DD62C /* SettingsView.swift in Sources */,
 				4528527229116C6E008DD62C /* LoginInteractor.swift in Sources */,
 				4528527029116C5F008DD62C /* LoginRouter.swift in Sources */,
+				4528528F29117E0B008DD62C /* SettingsViewController.swift in Sources */,
 				45285254290FA72B008DD62C /* SceneDelegate.swift in Sources */,
 				4528527A2911704E008DD62C /* LoginInteractorProtocol.swift in Sources */,
 				4528526E29116C4C008DD62C /* LoginViewController.swift in Sources */,
+				45285296291187E0008DD62C /* LoginPresenter.swift in Sources */,
+				4528529829118845008DD62C /* LoginPresenterProtocol.swift in Sources */,
 				45285281291171D3008DD62C /* LoginBuilderProtocol.swift in Sources */,
 				4528527429116C86008DD62C /* LoginView.swift in Sources */,
 				4528528429117203008DD62C /* LoginInput.swift in Sources */,
 				4528528C2911760F008DD62C /* TabBarFactory.swift in Sources */,
+				4528529A29118896008DD62C /* LoginViewControllerProtocol.swift in Sources */,
 				4528526B29116338008DD62C /* FileManagerService.swift in Sources */,
+				4528529C29118F90008DD62C /* LoginViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

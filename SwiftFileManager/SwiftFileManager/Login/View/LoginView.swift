@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class LoginView: UIView {
+final class LoginView: UIView {
 
     public var scrollViewConstraint: NSLayoutConstraint!
 
@@ -137,6 +137,10 @@ class LoginView: UIView {
 }
 
 extension LoginView {
+
+    public func setUpButton(with text: String) {
+        loginButton.setTitle(text, for: .normal)
+    }
 
     public func cleanInputs() {
         inputPasswordField.text = nil

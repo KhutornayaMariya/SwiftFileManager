@@ -18,7 +18,6 @@ final class LoginViewController: UIViewController {
         let view = LoginView()
 
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.onTapButtonHandler = didTapLoginButton
 
         return view
     }()
@@ -36,6 +35,7 @@ final class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUp()
+        interactor?.viewDidLoad()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -83,14 +83,6 @@ final class LoginViewController: UIViewController {
         interactor?.didTapLoginButton()
     }
 
-    private func createNewUser() {
-
-    }
-
-    private func openProfileVC() {
-        
-    }
-
     private func showAlert( alertTitle: String, errorCode: Int) {
         let message = getAlertMessage(errorCode: errorCode)
 
@@ -114,6 +106,32 @@ final class LoginViewController: UIViewController {
         default:
             return .errorMessage
         }
+    }
+
+    private func buttonAction(state: LoginViewModel.LoginState) -> () -> Void {
+        switch state {
+        case .withPassword:
+            return checkPassword
+        case .withNoPassword:
+            return createPassword
+        case .needRepeatPassword:
+            return checkPassword
+        }
+    }
+
+    private func createPassword() {
+        didTapLoginButton()
+    }
+
+    private func checkPassword() {
+        didTapLoginButton()
+    }
+}
+
+extension LoginViewController: LoginViewControllerProtocol {
+    func updateButton(with model: LoginViewModel) {
+        loginView.setUpButton(with: model.state.rawValue)
+        loginView.onTapButtonHandler = buttonAction(state: model.state)
     }
 }
 

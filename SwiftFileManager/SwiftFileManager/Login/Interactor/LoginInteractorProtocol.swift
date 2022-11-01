@@ -9,4 +9,5 @@ import Foundation
 
 protocol LoginInteractorProtocol {
     func didTapLoginButton()
+    func viewDidLoad()
 }

@@ -24,7 +24,7 @@ final class LoginRouter {
 }
 
 extension LoginRouter: LoginRouterProtocol {
-    func openFilesScreen() {
+    func openTabBar() {
         let navigationController = UINavigationController(rootViewController: TabBarViewController())
         navigationController.isNavigationBarHidden = true
         present(navigationController, modalPresentationStyle: .overCurrentContext, animated: true)
