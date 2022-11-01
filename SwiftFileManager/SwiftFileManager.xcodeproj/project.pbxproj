@@ -9,21 +9,43 @@
 /* Begin PBXBuildFile section */
 		45285252290FA72B008DD62C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45285251290FA72B008DD62C /* AppDelegate.swift */; };
 		45285254290FA72B008DD62C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45285253290FA72B008DD62C /* SceneDelegate.swift */; };
-		45285256290FA72B008DD62C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45285255290FA72B008DD62C /* ViewController.swift */; };
+		45285256290FA72B008DD62C /* FilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45285255290FA72B008DD62C /* FilesViewController.swift */; };
 		4528525B290FA72C008DD62C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4528525A290FA72C008DD62C /* Assets.xcassets */; };
 		4528525E290FA72C008DD62C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4528525C290FA72C008DD62C /* LaunchScreen.storyboard */; };
 		4528526B29116338008DD62C /* FileManagerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4528526A29116338008DD62C /* FileManagerService.swift */; };
+		4528526E29116C4C008DD62C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4528526D29116C4C008DD62C /* LoginViewController.swift */; };
+		4528527029116C5F008DD62C /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4528526F29116C5F008DD62C /* LoginRouter.swift */; };
+		4528527229116C6E008DD62C /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4528527129116C6E008DD62C /* LoginInteractor.swift */; };
+		4528527429116C86008DD62C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4528527329116C86008DD62C /* LoginView.swift */; };
+		4528527A2911704E008DD62C /* LoginInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452852792911704E008DD62C /* LoginInteractorProtocol.swift */; };
+		4528527C29117071008DD62C /* LoginRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4528527B29117071008DD62C /* LoginRouterProtocol.swift */; };
+		4528527F291171B5008DD62C /* LoginBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4528527E291171B5008DD62C /* LoginBuilder.swift */; };
+		45285281291171D3008DD62C /* LoginBuilderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45285280291171D3008DD62C /* LoginBuilderProtocol.swift */; };
+		4528528429117203008DD62C /* LoginInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4528528329117203008DD62C /* LoginInput.swift */; };
+		45285289291175D5008DD62C /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45285288291175D5008DD62C /* TabBarViewController.swift */; };
+		4528528C2911760F008DD62C /* TabBarFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4528528B2911760F008DD62C /* TabBarFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4528524E290FA72B008DD62C /* SwiftFileManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftFileManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45285251290FA72B008DD62C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		45285253290FA72B008DD62C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		45285255290FA72B008DD62C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		45285255290FA72B008DD62C /* FilesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesViewController.swift; sourceTree = "<group>"; };
 		4528525A290FA72C008DD62C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4528525D290FA72C008DD62C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4528525F290FA72C008DD62C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4528526A29116338008DD62C /* FileManagerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerService.swift; sourceTree = "<group>"; };
+		4528526D29116C4C008DD62C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		4528526F29116C5F008DD62C /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
+		4528527129116C6E008DD62C /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
+		4528527329116C86008DD62C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		452852792911704E008DD62C /* LoginInteractorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractorProtocol.swift; sourceTree = "<group>"; };
+		4528527B29117071008DD62C /* LoginRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouterProtocol.swift; sourceTree = "<group>"; };
+		4528527E291171B5008DD62C /* LoginBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBuilder.swift; sourceTree = "<group>"; };
+		45285280291171D3008DD62C /* LoginBuilderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBuilderProtocol.swift; sourceTree = "<group>"; };
+		4528528329117203008DD62C /* LoginInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInput.swift; sourceTree = "<group>"; };
+		45285288291175D5008DD62C /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		4528528B2911760F008DD62C /* TabBarFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +78,114 @@
 		45285250290FA72B008DD62C /* SwiftFileManager */ = {
 			isa = PBXGroup;
 			children = (
+				45285286291175B1008DD62C /* TabBar */,
+				452852852911730A008DD62C /* Files */,
+				4528526C29116C22008DD62C /* Login */,
 				45285251290FA72B008DD62C /* AppDelegate.swift */,
 				45285253290FA72B008DD62C /* SceneDelegate.swift */,
-				45285255290FA72B008DD62C /* ViewController.swift */,
 				4528526A29116338008DD62C /* FileManagerService.swift */,
 				4528525A290FA72C008DD62C /* Assets.xcassets */,
 				4528525C290FA72C008DD62C /* LaunchScreen.storyboard */,
 				4528525F290FA72C008DD62C /* Info.plist */,
 			);
 			path = SwiftFileManager;
+			sourceTree = "<group>";
+		};
+		4528526C29116C22008DD62C /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				45285282291171F4008DD62C /* Input */,
+				4528527D291171A3008DD62C /* Builder */,
+				4528527829116CA4008DD62C /* Interactor */,
+				4528527529116C8A008DD62C /* ViewController */,
+				4528527729116C9D008DD62C /* View */,
+				4528527629116C97008DD62C /* Router */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		4528527529116C8A008DD62C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4528526D29116C4C008DD62C /* LoginViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		4528527629116C97008DD62C /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				4528526F29116C5F008DD62C /* LoginRouter.swift */,
+				4528527B29117071008DD62C /* LoginRouterProtocol.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		4528527729116C9D008DD62C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4528527329116C86008DD62C /* LoginView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4528527829116CA4008DD62C /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				4528527129116C6E008DD62C /* LoginInteractor.swift */,
+				452852792911704E008DD62C /* LoginInteractorProtocol.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		4528527D291171A3008DD62C /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				4528527E291171B5008DD62C /* LoginBuilder.swift */,
+				45285280291171D3008DD62C /* LoginBuilderProtocol.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
+		45285282291171F4008DD62C /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				4528528329117203008DD62C /* LoginInput.swift */,
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
+		452852852911730A008DD62C /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				45285255290FA72B008DD62C /* FilesViewController.swift */,
+			);
+			path = Files;
+			sourceTree = "<group>";
+		};
+		45285286291175B1008DD62C /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				4528528A29117600008DD62C /* Factory */,
+				45285287291175C0008DD62C /* ViewController */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		45285287291175C0008DD62C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				45285288291175D5008DD62C /* TabBarViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		4528528A29117600008DD62C /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				4528528B2911760F008DD62C /* TabBarFactory.swift */,
+			);
+			path = Factory;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,9 +258,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45285256290FA72B008DD62C /* ViewController.swift in Sources */,
+				4528527F291171B5008DD62C /* LoginBuilder.swift in Sources */,
+				45285256290FA72B008DD62C /* FilesViewController.swift in Sources */,
 				45285252290FA72B008DD62C /* AppDelegate.swift in Sources */,
+				4528527C29117071008DD62C /* LoginRouterProtocol.swift in Sources */,
+				45285289291175D5008DD62C /* TabBarViewController.swift in Sources */,
+				4528527229116C6E008DD62C /* LoginInteractor.swift in Sources */,
+				4528527029116C5F008DD62C /* LoginRouter.swift in Sources */,
 				45285254290FA72B008DD62C /* SceneDelegate.swift in Sources */,
+				4528527A2911704E008DD62C /* LoginInteractorProtocol.swift in Sources */,
+				4528526E29116C4C008DD62C /* LoginViewController.swift in Sources */,
+				45285281291171D3008DD62C /* LoginBuilderProtocol.swift in Sources */,
+				4528527429116C86008DD62C /* LoginView.swift in Sources */,
+				4528528429117203008DD62C /* LoginInput.swift in Sources */,
+				4528528C2911760F008DD62C /* TabBarFactory.swift in Sources */,
 				4528526B29116338008DD62C /* FileManagerService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
