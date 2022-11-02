@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  FilesViewController.swift
 //  SwiftFileManager
 //
 //  Created by m.khutornaya on 31.10.2022.
@@ -7,11 +7,19 @@
 
 import UIKit
 
-final class ViewController: UIViewController {
+final class FilesViewController: UIViewController {
 
+    public var shouldSort: Bool = true
     var url: URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+
     var files: [URL] {
-        return (try? FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil)) ?? []
+        var fileList = (try? FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil)) ?? []
+
+        if UserDefaults.standard.bool(forKey: "sort") {
+            fileList.sort(by: {$0.absoluteString < $1.absoluteString})
+        }
+
+        return fileList
     }
 
     let fileManagerService: FileManagerServiceProtocol = FileManagerService()
@@ -32,7 +40,7 @@ final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUp()
-        print(url)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView), name: NSNotification.Name.reloadTableView, object: nil)
     }
 
     // MARK: Lifecycle
@@ -54,7 +62,7 @@ final class ViewController: UIViewController {
         NSLayoutConstraint.activate([
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant:20),
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
@@ -89,6 +97,11 @@ final class ViewController: UIViewController {
     func createNewFolder() {
         let newUrl = url.appendingPathComponent("\(Date())")
         fileManagerService.createNewFolder(url: newUrl)
+        tableView.reloadData()
+    }
+
+    @objc
+    private func reloadTableView() {
         tableView.reloadData()
     }
 
@@ -128,7 +141,7 @@ final class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UITableViewDataSource, UITableViewDelegate {
+extension FilesViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return files.count
@@ -157,7 +170,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = files[indexPath.row]
         if isFolder(path: item.path) {
-            let folderVC = ViewController()
+            let folderVC = FilesViewController()
             folderVC.url = item
             navigationController?.pushViewController(folderVC, animated: true)
         } else {
@@ -166,11 +179,15 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+extension FilesViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let image = info[.originalImage] as? UIImage else { return }
         dismiss(animated: true)
 
         showAlert(image: image)
     }
+}
+
+extension NSNotification.Name {
+    static let reloadTableView = NSNotification.Name("reloadTableView")
 }

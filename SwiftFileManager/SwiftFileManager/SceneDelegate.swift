@@ -10,6 +10,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    let builder: LoginBuilderProtocol = LoginBuilder()
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -19,7 +20,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: scene)
 
-        window.rootViewController = UINavigationController(rootViewController: ViewController())
+        let viewController = builder.build(input: LoginInput(entryPoint: .startApp))
+        window.rootViewController = UINavigationController(rootViewController: viewController)
+        UserDefaults.standard.set(true, forKey: "sort")
         window.makeKeyAndVisible()
         self.window = window
     }
