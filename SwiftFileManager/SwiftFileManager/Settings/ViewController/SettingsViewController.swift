@@ -14,6 +14,9 @@ final class SettingsViewController: UIViewController {
         let view = SettingsView()
 
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.onTapButtonHandler = changePassword
+        view.onSwitchHandler = setSorting
+        view.setSwitcher(isOn: UserDefaults.standard.bool(forKey: "sort"))
 
         return view
     }()
@@ -43,5 +46,23 @@ final class SettingsViewController: UIViewController {
             settingsView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             settingsView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
+    }
+
+    private func changePassword() {
+        let viewController = LoginBuilder().build(input: LoginInput(entryPoint: .settings))
+        let navigationController = UINavigationController(rootViewController: viewController)
+        navigationController.isNavigationBarHidden = true
+        present(navigationController, animated: true)
+    }
+
+    private func setSorting() {
+        let sort = settingsView.isSwitcherOn()
+
+        if UserDefaults.standard.bool(forKey: "sort") == sort {
+            return
+        } else {
+            UserDefaults.standard.set(sort, forKey: "sort")
+            NotificationCenter.default.post(name: NSNotification.Name.reloadTableView, object: nil)
+        }
     }
 }

@@ -9,9 +9,17 @@ import UIKit
 
 final class FilesViewController: UIViewController {
 
+    public var shouldSort: Bool = true
     var url: URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+
     var files: [URL] {
-        return (try? FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil)) ?? []
+        var fileList = (try? FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil)) ?? []
+
+        if UserDefaults.standard.bool(forKey: "sort") {
+            fileList.sort(by: {$0.absoluteString < $1.absoluteString})
+        }
+
+        return fileList
     }
 
     let fileManagerService: FileManagerServiceProtocol = FileManagerService()
@@ -32,7 +40,7 @@ final class FilesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUp()
-        print(url)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView), name: NSNotification.Name.reloadTableView, object: nil)
     }
 
     // MARK: Lifecycle
@@ -89,6 +97,11 @@ final class FilesViewController: UIViewController {
     func createNewFolder() {
         let newUrl = url.appendingPathComponent("\(Date())")
         fileManagerService.createNewFolder(url: newUrl)
+        tableView.reloadData()
+    }
+
+    @objc
+    private func reloadTableView() {
         tableView.reloadData()
     }
 
@@ -173,4 +186,8 @@ extension FilesViewController: UIImagePickerControllerDelegate, UINavigationCont
 
         showAlert(image: image)
     }
+}
+
+extension NSNotification.Name {
+    static let reloadTableView = NSNotification.Name("reloadTableView")
 }

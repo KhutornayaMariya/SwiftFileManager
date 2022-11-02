@@ -20,8 +20,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: scene)
 
-        let viewController = builder.build()
+        let viewController = builder.build(input: LoginInput(entryPoint: .startApp))
         window.rootViewController = UINavigationController(rootViewController: viewController)
+        UserDefaults.standard.set(true, forKey: "sort")
         window.makeKeyAndVisible()
         self.window = window
     }

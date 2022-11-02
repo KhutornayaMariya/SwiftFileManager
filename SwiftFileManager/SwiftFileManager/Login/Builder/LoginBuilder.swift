@@ -10,12 +10,12 @@ import UIKit
 
 final class LoginBuilder: LoginBuilderProtocol {
 
-    func build() -> UIViewController {
+    func build(input: LoginInput) -> UIViewController {
         let viewController = LoginViewController()
         let router = LoginRouter()
         let presenter = LoginPresenter(viewController: viewController)
         router.viewController = viewController
-        let interactor = LoginInteractor(router: router, presenter: presenter)
+        let interactor = LoginInteractor(input: input, router: router, presenter: presenter)
 
         viewController.interactor = interactor
 

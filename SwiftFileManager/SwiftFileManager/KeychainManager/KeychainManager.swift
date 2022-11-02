@@ -11,7 +11,7 @@ import KeychainAccess
 final class KeychainManager {
 
     private let keychain = Keychain()
-    private let key = UUID().uuidString
+    private let key = "SwiftFileManager"
 
     private func getPassword() -> String? {
         guard let password = keychain[key] else {
@@ -24,7 +24,6 @@ final class KeychainManager {
 extension KeychainManager: KeychainManagerProtocol {
 
     func passwordExists() -> Bool {
-        print(key)
         guard getPassword() != nil else {
             return false
         }
@@ -32,7 +31,6 @@ extension KeychainManager: KeychainManagerProtocol {
     }
 
     func isPasswordValid(_ password: String) -> Bool {
-        print(key)
         let keychainPassword = getPassword()
         guard let keychainPassword = keychainPassword else {
             return false
@@ -41,7 +39,6 @@ extension KeychainManager: KeychainManagerProtocol {
     }
 
     func savePassword(_ password: String, completion: @escaping (Bool, Error?) -> Void) {
-        print(key)
         do {
             try keychain.set(password, key: key)
             completion(true, nil)
@@ -52,7 +49,6 @@ extension KeychainManager: KeychainManagerProtocol {
     }
 
     func removePassword(completion: @escaping (Bool, Error?) -> Void) {
-        print(key)
         do {
             try keychain.remove(key)
             completion(true, nil)

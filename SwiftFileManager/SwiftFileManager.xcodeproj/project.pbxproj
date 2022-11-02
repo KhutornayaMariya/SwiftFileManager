@@ -32,6 +32,7 @@
 		452852A0291253B2008DD62C /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 4528529F291253B2008DD62C /* KeychainAccess */; };
 		452852A3291256BF008DD62C /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452852A2291256BF008DD62C /* KeychainManager.swift */; };
 		452852A729125D1A008DD62C /* KeychainManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452852A629125D1A008DD62C /* KeychainManagerProtocol.swift */; };
+		452852AF2912761D008DD62C /* LoginInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452852AE2912761D008DD62C /* LoginInput.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,7 @@
 		4528529B29118F90008DD62C /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		452852A2291256BF008DD62C /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		452852A629125D1A008DD62C /* KeychainManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainManagerProtocol.swift; sourceTree = "<group>"; };
+		452852AE2912761D008DD62C /* LoginInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginInput.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 		4528526C29116C22008DD62C /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				452852AD291275E5008DD62C /* Input */,
 				4528527D291171A3008DD62C /* Builder */,
 				4528529D29118F94008DD62C /* ViewModel */,
 				45285294291187D0008DD62C /* Presenter */,
@@ -251,6 +254,14 @@
 			path = KeychainManager;
 			sourceTree = "<group>";
 		};
+		452852AD291275E5008DD62C /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				452852AE2912761D008DD62C /* LoginInput.swift */,
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -344,6 +355,7 @@
 				4528529829118845008DD62C /* LoginPresenterProtocol.swift in Sources */,
 				45285281291171D3008DD62C /* LoginBuilderProtocol.swift in Sources */,
 				4528527429116C86008DD62C /* LoginView.swift in Sources */,
+				452852AF2912761D008DD62C /* LoginInput.swift in Sources */,
 				452852A3291256BF008DD62C /* KeychainManager.swift in Sources */,
 				4528528C2911760F008DD62C /* TabBarFactory.swift in Sources */,
 				4528529A29118896008DD62C /* LoginViewControllerProtocol.swift in Sources */,

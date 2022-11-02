@@ -72,9 +72,31 @@ final class SettingsView: UIView {
         }
     }
 
+    public var onSwitchHandler: (() -> Void)? {
+        didSet {
+            sortingSwitcher.addTarget(self, action: #selector(switchWrapper), for: .valueChanged)
+        }
+    }
+
     @objc
     private func tapWrapper() {
         self.onTapButtonHandler?()
+    }
+
+    @objc
+    private func switchWrapper() {
+        self.onSwitchHandler?()
+    }
+}
+
+extension SettingsView {
+
+    func setSwitcher(isOn: Bool) {
+        sortingSwitcher.isOn = isOn
+    }
+
+    func isSwitcherOn() -> Bool {
+        sortingSwitcher.isOn
     }
 }
 

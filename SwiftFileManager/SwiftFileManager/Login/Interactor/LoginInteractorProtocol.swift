@@ -9,6 +9,6 @@ import Foundation
 
 protocol LoginInteractorProtocol {
     func viewDidLoad()
-    func createPassword(_ password: String, completion: @escaping (Error?) -> Void)
-    func checkPassword(_ password: String, completion: () -> Void)
+    func didTapSingUpButton(_ password: String, completion: @escaping (Error?) -> Void)
+    func didTapSingInButton(_ password: String, completion: () -> Void)
 }

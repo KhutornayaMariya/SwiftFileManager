@@ -29,4 +29,8 @@ extension LoginRouter: LoginRouterProtocol {
         navigationController.isNavigationBarHidden = true
         present(navigationController, modalPresentationStyle: .overCurrentContext, animated: true)
     }
+
+    func dismiss() {
+        viewController?.dismiss(animated: true)
+    }
 }

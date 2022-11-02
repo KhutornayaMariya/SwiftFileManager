@@ -89,26 +89,26 @@ final class LoginViewController: UIViewController {
     private func buttonAction(state: LoginViewModel.LoginState) -> () -> Void {
         switch state {
         case .withPassword, .needRepeatPassword:
-            return checkPassword
+            return singIn
         case .withNoPassword:
-            return createPassword
+            return singUp
         }
     }
 
-    private func createPassword() {
+    private func singUp() {
         let filledPassword = loginView.getPassword()
         guard filledPassword.count > 3 else {
             showAlert(alertTitle: .alertTitle, alertMessage: .shortPassword)
             return
         }
-        interactor?.createPassword(filledPassword, completion: { [weak self] error in
+        interactor?.didTapSingUpButton(filledPassword, completion: { [weak self] error in
             self?.showAlert(alertTitle: .alertTitle, alertMessage: error?.localizedDescription ?? .errorMessage)
         })
     }
 
-    private func checkPassword() {
+    private func singIn() {
         let filledPassword = loginView.getPassword()
-        interactor?.checkPassword(filledPassword, completion: {
+        interactor?.didTapSingInButton(filledPassword, completion: {
             self.showAlert(alertTitle: .alertTitle, alertMessage: .wrongCredsError)
         })
     }
