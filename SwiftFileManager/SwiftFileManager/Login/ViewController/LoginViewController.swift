@@ -78,53 +78,39 @@ final class LoginViewController: UIViewController {
         view.setNeedsLayout()
     }
 
-    @objc
-    private func didTapLoginButton() {
-        interactor?.didTapLoginButton()
-    }
-
-    private func showAlert( alertTitle: String, errorCode: Int) {
-        let message = getAlertMessage(errorCode: errorCode)
-
-        let alertController = UIAlertController(title: alertTitle, message: message, preferredStyle: .alert)
+    private func showAlert( alertTitle: String, alertMessage: String) {
+        let alertController = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
         let action = UIAlertAction(title: String.alertAction, style: .default, handler: nil)
         alertController.addAction(action)
 
         present(alertController, animated: true)
     }
 
-    private func getAlertMessage(errorCode: Int) -> String {
-        switch errorCode {
-        case .shortPasswordErrorCode:
-            return .shortPassword
-        case .noSuchUserErrorCode:
-            return .noSuchUserError
-        case .invalidEmailAddressErrorCode:
-            return .invalidEmailAddress
-        case .wrongCredsErrorCode:
-            return .wrongCredsError
-        default:
-            return .errorMessage
-        }
-    }
-
     private func buttonAction(state: LoginViewModel.LoginState) -> () -> Void {
         switch state {
-        case .withPassword:
+        case .withPassword, .needRepeatPassword:
             return checkPassword
         case .withNoPassword:
             return createPassword
-        case .needRepeatPassword:
-            return checkPassword
         }
     }
 
     private func createPassword() {
-        didTapLoginButton()
+        let filledPassword = loginView.getPassword()
+        guard filledPassword.count > 3 else {
+            showAlert(alertTitle: .alertTitle, alertMessage: .shortPassword)
+            return
+        }
+        interactor?.createPassword(filledPassword, completion: { [weak self] error in
+            self?.showAlert(alertTitle: .alertTitle, alertMessage: error?.localizedDescription ?? .errorMessage)
+        })
     }
 
     private func checkPassword() {
-        didTapLoginButton()
+        let filledPassword = loginView.getPassword()
+        interactor?.checkPassword(filledPassword, completion: {
+            self.showAlert(alertTitle: .alertTitle, alertMessage: .wrongCredsError)
+        })
     }
 }
 
@@ -132,25 +118,14 @@ extension LoginViewController: LoginViewControllerProtocol {
     func updateButton(with model: LoginViewModel) {
         loginView.setUpButton(with: model.state.rawValue)
         loginView.onTapButtonHandler = buttonAction(state: model.state)
+        loginView.cleanInputs()
     }
 }
 
 private extension String {
-    static let signUpError = "Ошибка авторизации"
-    static let wrongCredsError = "Введенные вами логин или пароль неверные"
-    static let noSuchUserError =  "Пользователь не найден. Проверьте правильность логина или зарегистрируйтесь"
-
-    static let signInError = "Ошибка регистрации"
-    static let shortPassword = "Пароль должен содержать как минимум 6 символов"
-
-    static let alertAction = "Повторить"
+    static let wrongCredsError = "Убедитесь в правильности введенного пароля"
+    static let shortPassword = "Пароль должен содержать не менее четырех символов"
+    static let alertTitle = "Ошибка пароля"
     static let errorMessage = "Произошла ошибка. Повторите позже"
-    static let invalidEmailAddress = "Некорректный формат email. Убедитесь, что email соответствует формату example@ex.com"
-}
-
-private extension Int {
-    static let shortPasswordErrorCode = 17026
-    static let noSuchUserErrorCode =  17011
-    static let wrongCredsErrorCode =  17009
-    static let invalidEmailAddressErrorCode = 17008
+    static let alertAction = "Повторить"
 }

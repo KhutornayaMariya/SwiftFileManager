@@ -19,7 +19,11 @@ final class LoginPresenter {
 }
 
 extension LoginPresenter: LoginPresenterProtocol {
-    func updateView(hasPassword: Bool) {
+    func updateView(hasPassword: Bool, needRepeat: Bool) {
+        guard !needRepeat else {
+            viewController?.updateButton(with: ViewModel(state: .needRepeatPassword))
+            return
+        }
         let state: LoginViewModel.LoginState = hasPassword ? .withPassword : .withNoPassword
         let viewModel = ViewModel(state: state)
 

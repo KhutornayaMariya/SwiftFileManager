@@ -11,9 +11,9 @@ final class LoginInteractor {
 
     private let router: LoginRouterProtocol
     private let presenter: LoginPresenterProtocol
+    private let keychainManager: KeychainManagerProtocol = KeychainManager()
 
     init(
-        input: LoginInput,
         router: LoginRouter,
         presenter: LoginPresenter
     ) {
@@ -22,17 +22,32 @@ final class LoginInteractor {
     }
 
     private func passwordExists() -> Bool {
-        return false
+        keychainManager.passwordExists()
     }
 }
 
 extension LoginInteractor: LoginInteractorProtocol {
 
-    func didTapLoginButton() {
+    func createPassword(_ password: String, completion: @escaping (Error?) -> Void) {
+        keychainManager.savePassword(password) { [weak self] result, error in
+            guard error == nil, result else {
+                completion(error)
+                return
+            }
+
+            self?.presenter.updateView(hasPassword: self?.passwordExists() ?? false, needRepeat: true)
+        }
+    }
+
+    func checkPassword(_ password: String, completion: () -> Void) {
+        guard keychainManager.isPasswordValid(password) else {
+            completion()
+            return
+        }
         router.openTabBar()
     }
 
     func viewDidLoad() {
-        presenter.updateView(hasPassword: passwordExists())
+        presenter.updateView(hasPassword: passwordExists(), needRepeat: false)
     }
 }

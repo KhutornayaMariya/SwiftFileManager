@@ -9,5 +9,5 @@ import Foundation
 import UIKit
 
 protocol LoginBuilderProtocol {
-    func build(input: LoginInput) -> UIViewController
+    func build() -> UIViewController
 }

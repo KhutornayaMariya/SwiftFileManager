@@ -8,5 +8,5 @@
 import Foundation
 
 protocol LoginPresenterProtocol {
-    func updateView(hasPassword: Bool)
+    func updateView(hasPassword: Bool, needRepeat: Bool)
 }

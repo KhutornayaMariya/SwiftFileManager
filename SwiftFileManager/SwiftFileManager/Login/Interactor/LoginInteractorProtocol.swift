@@ -8,6 +8,7 @@
 import Foundation
 
 protocol LoginInteractorProtocol {
-    func didTapLoginButton()
     func viewDidLoad()
+    func createPassword(_ password: String, completion: @escaping (Error?) -> Void)
+    func checkPassword(_ password: String, completion: () -> Void)
 }

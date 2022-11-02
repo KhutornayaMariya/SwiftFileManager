@@ -144,11 +144,6 @@ extension LoginView {
 
     public func cleanInputs() {
         inputPasswordField.text = nil
-        loginButton.isEnabled = false
-    }
-
-    public func disableButtons() {
-        loginButton.isEnabled = false
     }
 
     public func getPassword() -> String {
@@ -160,14 +155,6 @@ extension LoginView: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         endEditing(true)
         return true
-    }
-
-    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
-        if isInputsFilled() {
-            loginButton.isEnabled = true
-        } else {
-            loginButton.isEnabled = false
-        }
     }
 }
 

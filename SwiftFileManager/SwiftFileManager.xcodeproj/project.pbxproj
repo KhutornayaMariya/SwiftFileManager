@@ -21,7 +21,6 @@
 		4528527C29117071008DD62C /* LoginRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4528527B29117071008DD62C /* LoginRouterProtocol.swift */; };
 		4528527F291171B5008DD62C /* LoginBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4528527E291171B5008DD62C /* LoginBuilder.swift */; };
 		45285281291171D3008DD62C /* LoginBuilderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45285280291171D3008DD62C /* LoginBuilderProtocol.swift */; };
-		4528528429117203008DD62C /* LoginInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4528528329117203008DD62C /* LoginInput.swift */; };
 		45285289291175D5008DD62C /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45285288291175D5008DD62C /* TabBarViewController.swift */; };
 		4528528C2911760F008DD62C /* TabBarFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4528528B2911760F008DD62C /* TabBarFactory.swift */; };
 		4528528F29117E0B008DD62C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4528528E29117E0B008DD62C /* SettingsViewController.swift */; };
@@ -30,6 +29,9 @@
 		4528529829118845008DD62C /* LoginPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4528529729118845008DD62C /* LoginPresenterProtocol.swift */; };
 		4528529A29118896008DD62C /* LoginViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4528529929118896008DD62C /* LoginViewControllerProtocol.swift */; };
 		4528529C29118F90008DD62C /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4528529B29118F90008DD62C /* LoginViewModel.swift */; };
+		452852A0291253B2008DD62C /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 4528529F291253B2008DD62C /* KeychainAccess */; };
+		452852A3291256BF008DD62C /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452852A2291256BF008DD62C /* KeychainManager.swift */; };
+		452852A729125D1A008DD62C /* KeychainManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452852A629125D1A008DD62C /* KeychainManagerProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,7 +51,6 @@
 		4528527B29117071008DD62C /* LoginRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouterProtocol.swift; sourceTree = "<group>"; };
 		4528527E291171B5008DD62C /* LoginBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBuilder.swift; sourceTree = "<group>"; };
 		45285280291171D3008DD62C /* LoginBuilderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBuilderProtocol.swift; sourceTree = "<group>"; };
-		4528528329117203008DD62C /* LoginInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInput.swift; sourceTree = "<group>"; };
 		45285288291175D5008DD62C /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		4528528B2911760F008DD62C /* TabBarFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarFactory.swift; sourceTree = "<group>"; };
 		4528528E29117E0B008DD62C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +59,8 @@
 		4528529729118845008DD62C /* LoginPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenterProtocol.swift; sourceTree = "<group>"; };
 		4528529929118896008DD62C /* LoginViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerProtocol.swift; sourceTree = "<group>"; };
 		4528529B29118F90008DD62C /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		452852A2291256BF008DD62C /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
+		452852A629125D1A008DD62C /* KeychainManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainManagerProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				452852A0291253B2008DD62C /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +94,7 @@
 		45285250290FA72B008DD62C /* SwiftFileManager */ = {
 			isa = PBXGroup;
 			children = (
+				452852A12912569A008DD62C /* KeychainManager */,
 				4528528D29117DF4008DD62C /* Settings */,
 				45285286291175B1008DD62C /* TabBar */,
 				452852852911730A008DD62C /* Files */,
@@ -107,10 +112,9 @@
 		4528526C29116C22008DD62C /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				4528527D291171A3008DD62C /* Builder */,
 				4528529D29118F94008DD62C /* ViewModel */,
 				45285294291187D0008DD62C /* Presenter */,
-				45285282291171F4008DD62C /* Input */,
-				4528527D291171A3008DD62C /* Builder */,
 				4528527829116CA4008DD62C /* Interactor */,
 				4528527529116C8A008DD62C /* ViewController */,
 				4528527729116C9D008DD62C /* View */,
@@ -161,14 +165,6 @@
 				45285280291171D3008DD62C /* LoginBuilderProtocol.swift */,
 			);
 			path = Builder;
-			sourceTree = "<group>";
-		};
-		45285282291171F4008DD62C /* Input */ = {
-			isa = PBXGroup;
-			children = (
-				4528528329117203008DD62C /* LoginInput.swift */,
-			);
-			path = Input;
 			sourceTree = "<group>";
 		};
 		452852852911730A008DD62C /* Files */ = {
@@ -246,6 +242,15 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		452852A12912569A008DD62C /* KeychainManager */ = {
+			isa = PBXGroup;
+			children = (
+				452852A2291256BF008DD62C /* KeychainManager.swift */,
+				452852A629125D1A008DD62C /* KeychainManagerProtocol.swift */,
+			);
+			path = KeychainManager;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -262,6 +267,9 @@
 			dependencies = (
 			);
 			name = SwiftFileManager;
+			packageProductDependencies = (
+				4528529F291253B2008DD62C /* KeychainAccess */,
+			);
 			productName = SwiftFileManager;
 			productReference = 4528524E290FA72B008DD62C /* SwiftFileManager.app */;
 			productType = "com.apple.product-type.application";
@@ -290,6 +298,9 @@
 				Base,
 			);
 			mainGroup = 45285245290FA72B008DD62C;
+			packageReferences = (
+				4528529E291253B2008DD62C /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+			);
 			productRefGroup = 4528524F290FA72B008DD62C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -329,10 +340,11 @@
 				4528527A2911704E008DD62C /* LoginInteractorProtocol.swift in Sources */,
 				4528526E29116C4C008DD62C /* LoginViewController.swift in Sources */,
 				45285296291187E0008DD62C /* LoginPresenter.swift in Sources */,
+				452852A729125D1A008DD62C /* KeychainManagerProtocol.swift in Sources */,
 				4528529829118845008DD62C /* LoginPresenterProtocol.swift in Sources */,
 				45285281291171D3008DD62C /* LoginBuilderProtocol.swift in Sources */,
 				4528527429116C86008DD62C /* LoginView.swift in Sources */,
-				4528528429117203008DD62C /* LoginInput.swift in Sources */,
+				452852A3291256BF008DD62C /* KeychainManager.swift in Sources */,
 				4528528C2911760F008DD62C /* TabBarFactory.swift in Sources */,
 				4528529A29118896008DD62C /* LoginViewControllerProtocol.swift in Sources */,
 				4528526B29116338008DD62C /* FileManagerService.swift in Sources */,
@@ -544,6 +556,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4528529E291253B2008DD62C /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4528529F291253B2008DD62C /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4528529E291253B2008DD62C /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 45285246290FA72B008DD62C /* Project object */;
 }
